@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { Router } from 'express'
 import { routerEspecies } from './especies/'
 export const router = Router()

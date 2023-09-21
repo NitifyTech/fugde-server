@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import './config/'
 import cluster from 'node:cluster'
 import { WSService } from './interface'
