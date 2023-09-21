@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "lib": ["ES2021", "esnext.asynciterable"],
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "strict": true,
+      "sourceMap": true,
+      "target": "ES2022",
+      "outDir": "dist",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "strictPropertyInitialization": false,
+      "skipLibCheck": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["__tests__", "node_modules"]
+  }
