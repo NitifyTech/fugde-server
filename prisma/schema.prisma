@@ -7,6 +7,24 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Homepage {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  callActionMessage String
+  shortMessage      String
+  image             String?
+  status            String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @default(now())
+}
+
 model Especies {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  cardTitle       String
+  cardDescription String
+  registryType    String
+  imageLink       String
+  status          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now())
 }
