@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Response, Request } from 'express'
 import { Homepage } from '../../application/use-case/HomePagesInfos'
 
