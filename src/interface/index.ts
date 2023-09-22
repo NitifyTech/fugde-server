@@ -8,7 +8,7 @@ import { router } from '../interface/router/'
 import { Server } from 'socket.io'
 
 export class WSService {
-    private port = process.env?.PORT ?? 3000
+    private port = process.env?.PORT ?? 3001
     private app = express()
     private httpServer = createServer(this.app)
     private io = new Server(this.httpServer)
