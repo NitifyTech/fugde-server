@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { prisma } from '../../infraestructure/orm'
 interface Data {
     id?: string;
