@@ -11,7 +11,7 @@ export async function Especies(data: Data) {
     const result = await prisma.especies.findFirst({
         where: { id }
     })
-    const { cardTitle: title, cardDescription: shortDescription } = result
+    const { cardTitle: shortDescription, cardDescription: title } = result
     return {
         title,
         shortDescription,
