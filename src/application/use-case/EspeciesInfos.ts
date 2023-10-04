@@ -5,6 +5,60 @@ interface Data {
     especie: string;
 }
 
+interface ChartData {
+    options: {
+        chart: {
+            id: string;
+        };
+        xaxis: {
+            categories: number[];
+        };
+    };
+    series: {
+        name: string;
+        data: number[];
+    }[];
+}
+
+
+
+async function GetGraphs(id: string, especie: string): Promise<ChartData[]> {
+    const firstGraph = await prisma.peixeData.aggregateRaw({
+        pipeline: [
+            {
+                $group:
+                {
+                    _id: "$sexo",
+                    data: {
+                        $addToSet: "$comprimento",
+                    },
+                },
+            },
+            {
+                $project:
+                {
+                    _id: 0,
+                    label: "$_id",
+                    data: 1,
+                },
+            },
+        ]
+    })
+
+    return [{
+        series: firstGraph.map(x => {
+            return {
+                data: x.data.map(y => {
+                    return {
+                        y,
+                        x: x.label
+                    }
+                })
+            }
+        })
+    }]
+}
+
 export async function Especies(data: Data) {
     const { id, especie } = data
 
@@ -15,6 +69,6 @@ export async function Especies(data: Data) {
     return {
         title,
         shortDescription,
-        chartsList: []
+        chartsList: await GetGraphs(id, especie)
     }
 }

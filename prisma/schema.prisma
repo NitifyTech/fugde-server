@@ -18,13 +18,29 @@ model Homepage {
 }
 
 model Especies {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
   name            String
   cardTitle       String
   cardDescription String
   registryType    String
   imageLink       String
   status          String
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @default(now())
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @default(now())
+  PeixeData       PeixeData[]
+}
+
+model PeixeData {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  sexo          String
+  comprimento   Int
+  pesoTotal     Float
+  pesoEvicerado Float
+  pesoGonada    Float
+  pesoFigado    Float
+  pesoEstomago  Float
+  especies      Especies @relation(fields: [especie], references: [id]) // Você pode definir o tipo de dados adequado aqui
+  coletadoEm    DateTime
+  criadoEm      DateTime @default(now())
+  especie       String   @db.ObjectId
 }
