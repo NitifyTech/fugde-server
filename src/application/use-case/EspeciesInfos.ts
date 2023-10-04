@@ -26,6 +26,11 @@ async function GetGraphs(id: string, especie: string): Promise<ChartData[]> {
     const firstGraph = await prisma.peixeData.aggregateRaw({
         pipeline: [
             {
+                $sort: {
+                    comprimento: 1
+                }
+            },
+            {
                 $group:
                 {
                     _id: "$sexo",
@@ -48,7 +53,7 @@ async function GetGraphs(id: string, especie: string): Promise<ChartData[]> {
     return [{
         options: {
             chart: {
-                id: "line",
+                id: "rangeArea",
                 animations: {
                     speed: 200
                 }
