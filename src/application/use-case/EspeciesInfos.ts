@@ -46,6 +46,11 @@ async function GetGraphs(id: string, especie: string): Promise<ChartData[]> {
     })
 
     return [{
+        options: {
+            chart: {
+                id: "line"
+            },
+        },
         series: firstGraph.map(x => {
             return {
                 data: x.data.map(y => {
