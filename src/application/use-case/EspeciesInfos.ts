@@ -48,17 +48,17 @@ async function GetGraphs(id: string, especie: string): Promise<ChartData[]> {
     return [{
         options: {
             chart: {
-                id: "line"
+                id: "line",
+                animations: {
+                    speed: 200
+                }
             },
         },
         series: firstGraph.map(x => {
             return {
-                data: x.data.map(y => {
-                    return {
-                        y,
-                        x: x.label
-                    }
-                })
+                type: 'line',
+                name: x.label,
+                data: x.data
             }
         })
     }]
