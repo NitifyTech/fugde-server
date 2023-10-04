@@ -53,7 +53,7 @@ async function GetGraphs(id: string, especie: string): Promise<ChartData[]> {
     return [{
         options: {
             chart: {
-                id: "rangeArea",
+                id: "boxPlot",
                 animations: {
                     speed: 200
                 }
